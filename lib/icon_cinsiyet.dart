@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:myapp/constants.dart';
 
 class IconCinsiyet extends StatelessWidget {
   final String cinsiyet;
@@ -23,11 +24,9 @@ class IconCinsiyet extends StatelessWidget {
         ),
         Text(
           cinsiyet,
-          style: TextStyle(
-              color: Colors.black54, fontSize: 20, fontWeight: FontWeight.bold),
+          style: kMetinStili,
         )
       ],
     );
   }
 }
-
