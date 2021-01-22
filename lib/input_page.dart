@@ -16,6 +16,7 @@ class _InputPageState extends State<InputPage> {
   double icilenSigara = 15.0;
   double yapilanSpor = 3.0;
   int boy = 170;
+  int kilo = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -36,63 +37,14 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     child: MyContainer(
                       child: SizedBox(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RotatedBox(
-                              quarterTurns: 3,
-                              child: Text(
-                                'BOY',
-                                style: kMetinStili,
-                              ),
-                            ),
-                            SizedBox(width: 15),
-                            RotatedBox(
-                              quarterTurns: 3,
-                              child: Text(
-                                boy.toString(),
-                                style: kSayiStili,
-                              ),
-                            ),
-                            SizedBox(width: 15),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ButtonTheme(
-                                  minWidth: 36,
-                                  child: OutlineButton(
-                                    borderSide: BorderSide(color: Colors.lightBlue),
-                                    onPressed: () {
-                                      print('üstteki buton basıldı');
-                                    },
-                                    child: Icon(
-                                      FontAwesomeIcons.plus,
-                                      size: 10,
-                                    ),
-                                  ),
-                                ),
-                                ButtonTheme(
-                                  minWidth: 36,
-                                  child: OutlineButton(
-                                    borderSide: BorderSide(color: Colors.lightBlue),
-                                    onPressed: () {
-                                      print('alttaki buton basıldı');
-                                    },
-                                    child: Icon(
-                                      FontAwesomeIcons.minus,
-                                      size: 10,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                        child: buildRowOutlineButton('BOY'),
                       ),
                     ),
                   ),
                   Expanded(
-                    child: MyContainer(),
+                    child: MyContainer(
+                      child: buildRowOutlineButton('KİLO'),
+                    ),
                   ),
                 ],
               ),
@@ -190,5 +142,66 @@ class _InputPageState extends State<InputPage> {
             ),
           ],
         ));
+  }
+
+  Row buildRowOutlineButton(String label) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        RotatedBox(
+          quarterTurns: 3,
+          child: Text(
+            label,
+            style: kMetinStili,
+          ),
+        ),
+        SizedBox(width: 15),
+        RotatedBox(
+          quarterTurns: 3,
+          child: Text(
+            label == 'BOY' ? boy.toString() : kilo.toString(),
+            style: kSayiStili,
+          ),
+        ),
+        SizedBox(width: 15),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ButtonTheme(
+              minWidth: 36,
+              child: OutlineButton(
+                borderSide: BorderSide(color: Colors.lightBlue),
+                onPressed: () {
+                  setState(() {
+                    label == 'BOY' ? boy++ : kilo++;
+                  });
+                  print('üstteki buton basıldı');
+                },
+                child: Icon(
+                  FontAwesomeIcons.plus,
+                  size: 10,
+                ),
+              ),
+            ),
+            ButtonTheme(
+              minWidth: 36,
+              child: OutlineButton(
+                borderSide: BorderSide(color: Colors.lightBlue),
+                onPressed: () {
+                  setState(() {
+                    label == 'BOY' ? boy-- : kilo--;
+                  });
+                  print('alttaki buton basıldı');
+                },
+                child: Icon(
+                  FontAwesomeIcons.minus,
+                  size: 10,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
