@@ -1,6 +1,8 @@
 # myapp
 
-A new Flutter project.
+Flutter ile Vücut Kitle Endeksi Hesaplama Programı
+
+YouTube Kanalım: https://www.youtube.com/channel/UC4gISH6fh77iN48cUSNjQ-Q?sub_confirmation=1
 
 ## Getting Started
 
